@@ -9,7 +9,7 @@
 def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_title
   "SELECT projects.titles
   FROM projects
-  INNER JOIN
+  INNER JOIN 
   ORDER BY titles ASC"
 end
 
