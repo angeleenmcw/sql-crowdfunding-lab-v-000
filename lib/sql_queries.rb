@@ -40,13 +40,13 @@ def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_th
   LEFT JOIN pledges
   ON users.id = pledges.user_id 
   GROUP BY users.name
-  ORDER BY pledges.amount"
+  ORDER BY SUM(pledges.amount);"
 end
 
 def selects_the_category_names_and_pledge_amounts_of_all_pledges_in_the_music_category
   "SELECT projects.category, pledges.amount
   From projects
-  INNER JOIN pledges
+  RIGHT JOIN pledges
   On projects.id = pledges.project_id
   WHERE projects.category = 'music';"
 end
