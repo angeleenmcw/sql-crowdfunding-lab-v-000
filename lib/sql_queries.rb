@@ -31,7 +31,7 @@ def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_
         ON projects.id = pledges.user_id 
         WHERE users.id = pledges.user_id
         ) -
-        (SELECT sum(amount) as out_amount
+        (SELECT sum(amount) as pledges_amount
          FROM variable_out
          WHERE user_id = '111111'
         ) o
