@@ -25,18 +25,10 @@ def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
-  "SELECT ((SELECT sum(projects.funding_goal) as funding_goal_amount
-        FROM projects
-        INNER JOIN pledges
-        ON projects.id = pledges.user_id 
-        WHERE users.id = pledges.user_id
-        ) -
-        (SELECT sum(amount) as pledges_amount
-         FROM variable_out
-         WHERE user_id = '111111'
-        ) o
-       ) as diff
-FROM dual;"
+ "SELECT project.titles, project.funding_goal, pledges.amount, project.funding_goal - pledges.amount as Difference
+FROM Sets X
+LEFT OUTER JOIN SetY Y
+  ON Y.id = X.ID
   "SELECT projects.title, projects.funding_goal, pledges.amount
   FROM projects
   INNER JOIN pledges
