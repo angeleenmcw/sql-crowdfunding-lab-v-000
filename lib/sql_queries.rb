@@ -25,9 +25,11 @@ def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
-  "SELECT ((SELECT sum(funding_goal) as funding_goalamount
-         FROM variable_in
-         WHERE user_id = '111111'
+  "SELECT ((SELECT sum(projects.funding_goal) as funding_goal_amount
+        FROM projects
+        INNER JOIN pledges
+        ON projects.id = pledges.user_id 
+        WHERE users.id = pledges.user_id
         ) -
         (SELECT sum(amount) as out_amount
          FROM variable_out
