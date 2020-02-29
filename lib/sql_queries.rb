@@ -46,7 +46,7 @@ end
 def selects_the_category_names_and_pledge_amounts_of_all_pledges_in_the_music_category
   "SELECT projects.category, pledges.amount
   From projects
-  RIGHT JOIN pledges
+  JOIN pledges
   On projects.id = pledges.project_id
   WHERE projects.category = 'music';"
 end
