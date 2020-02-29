@@ -12,7 +12,7 @@ def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_
   INNER JOIN pledges
   ON projects.id = pledges.project_id 
   WHERE projects.id = pledges.project_id
-  GROUP BY projects.title
+  GROUP BY projects.title, pledges.amount
   ORDER BY projects.title ASC;"
 end
 
@@ -40,7 +40,7 @@ def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_th
   INNER JOIN pledges
   ON users.id = pledges.user_id 
   WHERE users.id = pledges.user_id
-  GROUP BY users.name
+  GROUP BY users.name, pledges.amount
   ORDER BY pledges.amount"
 end
 
